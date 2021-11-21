@@ -6,10 +6,11 @@
 
 import Comments from './components/Comments'
 
+
 export default {
   name: 'app',
   components: {
-    Comments
+    Comments,
   }
 }
 </script>

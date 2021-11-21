@@ -7,10 +7,14 @@
         <div class="list-group">
             <p v-if="comments.length <=0">Sem Comentários...</p>
             <div class="list-group-item" v-for="(comment, index) in allComments" :key="comment.id">
+                <span class="comment_author">id: <strong>{{ comment.id }}</strong></span>
+                <br>
                 <span class="comment_author">Autor: <strong>{{ comment.name }}</strong></span>
+                <br>
+                <span class="comment_email">E-mail: <strong>{{ comment.email }}</strong></span>
                 <p>{{ comment.message }}</p>
                 <div>
-                    <button class="btn btn-success btn-sm" style="margin: 2.5px;" v-on:click.prevent="" title="Excluir">Editar</button>
+                    <button class="btn btn-success btn-sm" style="margin: 2.5px;" v-on:click.prevent="editComment(index)" title="Editar">Editar</button>
                     <button class="btn btn-danger btn-sm" style="margin: 2.5px;" v-on:click.prevent="removeComment(index)" title="Excluir">Excluir</button>
                 </div>
             </div>
@@ -22,6 +26,7 @@
 <script>
 //importando o formulário
 import FormTodo from './FormTodo.vue';
+
 export default{
     components:{
         FormTodo
@@ -36,11 +41,20 @@ export default{
     methods: {
         addComment(comment){
             this.comments.push(comment);
+
         },
         removeComment(index){
             //removendo o item do array
             this.comments.splice(index, 1);
             
+        },
+        editComment(){
+
+            this.name = this.comments;
+            this.message = this.comments.email;
+            this.email = this.comments.message; 
+            
+            console.log(this.name);
         }
 
     },
